@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #56CCF2;
+  
+  
+  background: -webkit-linear-gradient(-45deg, #56CCF2 0%, #2F80ED 100%);
+  
+  background: -webkit-linear-gradient(315deg, #56CCF2 0%, #2F80ED 100%);
+  background: -o-linear-gradient(315deg, #56CCF2 0%, #2F80ED 100%);
+  background: linear-gradient(135deg, #56CCF2 0%, #2F80ED 100%);
+  
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56ccf2', endColorstr='#2f80ed',GradientType=1 );
+   }
+
+body {
+  overflow: hidden; }
+
+.controls {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9999; }
+  .controls .control {
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    color: #FFF;
+    font-size: 12px;
+    padding: 7px 10px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin-bottom: 10px; }
+    .controls .control#controlDebug {
+      background-color: #FD4E4E; }
+    .controls .control#controlOrbit {
+      background-color: #BAFD4E; }
+    .controls .control#controlGrid {
+      background-color: #9A4EFD; }
+
+/*# sourceMappingURL=master.css.map */

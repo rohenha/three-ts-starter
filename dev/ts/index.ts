@@ -1,31 +1,35 @@
 import { Loader } from './loader';
-// tslint:disable-next-line:no-var-requires
-const TWEEN = require('@tweenjs/tween.js');
+import {Power2, Elastic, TimelineMax} from 'gsap';
 
 class App {
   public three: Loader;
-  public greenMaterial: THREE.MeshBasicMaterial;
+  public material: THREE.MeshBasicMaterial;
   public cube: THREE.Object3D;
   public t: number = 0;
-  public tween: any;
+  public tween: TimelineMax;
   constructor() {
     this.three = new Loader(true, false, '');
-    this.greenMaterial = this.three.elements.add2DMaterial(0xFFFFFF);
-    const cube = this.three.elements.addCube(1, 1, 1, this.greenMaterial);
-    const coords = { x: 0, y: -1, z: 0 };
-    this.tween = new TWEEN.Tween(coords)
-            .to({ x: 0, y: 1, z: 0 }, 1000)
-            .easing(TWEEN.Easing.Quadratic.Out)
-            // tslint:disable-next-line:only-arrow-functions
-            .onUpdate(function() {
-                cube.position.x = coords.x;
-                cube.position.y = coords.y;
-                cube.position.z = coords.z;
-            })
-            // tslint:disable-next-line:only-arrow-functions
-            .repeat(Infinity)
-            .yoyo(true)
-            .start();
+    this.material = this.three.elements.add2DMaterial(0xFFFFFF);
+    const cube = this.three.elements.addCube(1, 1, 1, this.material);
+    cube.position.y = 0.5;
+    this.tween = new TimelineMax({
+      paused: false,
+      yoyo : true,
+      repeat : -1,
+      onComplete() {
+      }
+    });
+    this.tween
+    .addLabel('in', 0)
+    .to(cube.position, 2, {
+      y: 0.5,
+      ease: Power2.easeInOut
+    })
+    .to(cube.position, 2, {
+      y: 2,
+      ease: Power2.easeInOut
+    });
+
     requestAnimationFrame( this.animate.bind(this) );
   }
 
@@ -36,7 +40,7 @@ class App {
     this.three.cameras[0].position.z = this.three.getSin(this.t) * 3;
     this.three.cameras[0].lookAt(this.three.elements.createVector(3, [0, 0, 0]));
     this.three.render();
-    TWEEN.update(time);
+    // TWEEN.update(time);
   }
 }
 

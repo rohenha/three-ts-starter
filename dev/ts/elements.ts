@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { Loader } from './three-base';
+import { Loader } from './loader';
 
 export class Elements {
   public loader: Loader;
@@ -26,7 +26,7 @@ export class Elements {
     far: number = 20
   ): THREE.DirectionalLight {
     const light = new THREE.DirectionalLight(color, intensity);
-    light.shadow.camera.far = far;
+    // light.shadow.camera.far = far;
     light.castShadow = castShadow;
     this.loader.scene.add( light );
     this.loader.lights.push(light);
