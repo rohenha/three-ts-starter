@@ -1,0 +1,10 @@
+{
+    "files": [
+        "dev/ts/home.ts",
+        "dev/ts/projects.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "es2015"
+    }
+}
